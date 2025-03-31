@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e  # стопаем скрипт при любой ошибке
+set -e
 
 # Пути
 CUSTOM_PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
@@ -8,14 +8,12 @@ OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
 ZSHRC_PATH="$HOME/.zshrc"
 
 # Список плагинов и их репы
-declare -A PLUGINS=(
-    ["fzf-tab"]="https://github.com/Aloxaf/fzf-tab.git"
-    ["fzf-zsh-plugin"]="https://github.com/unixorn/fzf-zsh-plugin.git"
-    ["zsh-autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions.git"
-    ["zsh-syntax-highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
+PLUGINS=(
+    "fzf-tab https://github.com/Aloxaf/fzf-tab.git"
+    "fzf-zsh-plugin https://github.com/unixorn/fzf-zsh-plugin.git"
+    "zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git"
+    "zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git"
 )
-
-echo "Начинаю установку..."
 
 echo "Проверка и установка зависимостей..."
 for cmd in git curl; do
@@ -24,7 +22,7 @@ for cmd in git curl; do
         exit 1
     fi
 done
-echo "✅ Есть все зависимости установлены"
+echo "Есть все зависимости установлены"
 
 
 echo "1. Устанавливаю Oh My Zsh..."
@@ -41,21 +39,24 @@ mkdir -p "${CUSTOM_PLUGINS_DIR}"
 
 
 echo "3. Устанавливаю плагины..."
-for plugin in "${!PLUGINS[@]}"; do
-    PLUGIN_DIR="${CUSTOM_PLUGINS_DIR}/${plugin}"
+for plugin in "${PLUGINS[@]}"; do
+    NAME=$(echo "$plugin" | cut -d' ' -f1)
+    URL=$(echo "$plugin" | cut -d' ' -f2)
+    PLUGIN_DIR="${CUSTOM_PLUGINS_DIR}/${NAME}"
+
     if [ ! -d "${PLUGIN_DIR}" ]; then
-        echo "⬇️ Клонируем $plugin..."
-        git clone --depth=1 "${PLUGINS[$plugin]}" "${PLUGIN_DIR}"
+        echo "⬇Клонирую $NAME..."
+        git clone --depth=1 "$URL" "$PLUGIN_DIR"
     else
-        echo "✅ $plugin уже установлен, пропускаю."
+        echo "Обновляю $NAME..."
+        git -C "${PLUGIN_DIR}" pull --quiet || echo "❌ Не удалось обновить $NAME."
     fi
 done
 
 
-echo "4. Меняем дефолтную оболочку на zsh..."
 if [ "$SHELL" != "$(which zsh)" ]; then
-    echo "🔄 Меняю оболочку на Zsh..."
+    echo "4. Меняем дефолтную оболочку на zsh..."
     chsh -s "$(which zsh)"
 fi
 
-echo "🎉 Установка завершена! Перезапусти терминал"
+echo "🎉 Установка zsh завершена! Перезапусти терминал"

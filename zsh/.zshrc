@@ -83,6 +83,19 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=
 
+# Параметры для fzf
+export FZF_PREVIEW_WINDOW=':hidden'
+export FZF_DEFAULT_OPTS="--layout=default --info=inline --height=80% --multi --preview='${FZF_PREVIEW}' --preview-window='${FZF_PREVIEW_WINDOW}'"
+export FZF_COLOR_SCHEME="--color=bg+:black,fg+:white"
+export FZF_PROMPT="∼ "
+export FZF_POINTER="▶"
+export FZF_MARKER="✓"
+export FZF_BIND_KEYS="--bind '?:toggle-preview' --bind 'ctrl-a:select-all' --bind 'ctrl-e:execute(vim {+} >/dev/tty)' --bind 'ctrl-v:execute(code {+})'"
+
+export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+#export FZF_BASE=/home/kozhokar/clone/fzf
+
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -103,8 +116,6 @@ plugins=(
 
 
 ZSH_TMUX_AUTOSTART=false
-export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
-#export FZF_BASE=/home/kozhokar/clone/fzf
 
 # Open in tmux popup if on tmux, otherwise use --height mode
 # export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
