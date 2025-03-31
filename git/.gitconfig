@@ -1,0 +1,47 @@
+[user]
+	name = Дмитрий Кожокарь
+	email = 2korzhik@gmail.com
+[push]
+	default = tracking
+[branch]
+	autosetuprebase = always
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	log = auto
+[alias]
+	st = status --short --branch
+	ci = commit
+	ca = commit --amend --no-edit
+	co = checkout
+	br = branch
+	d = diff
+	hist = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n 20
+	his = log --pretty=format:\"%h %ad | %s%d [%an]\"  --graph --date=format:'%Y-%m-%d %H:%M:%S' -- 
+	l = log --pretty=format:'%C(auto,yellow) %h %Creset %ad %C(auto,blue) [%an] %Cgreen %s %C(auto,magenta) %d' --date=format:'%Y-%m-%d %H:%M:%S' -n 12
+	bro = !git for-each-ref --sort=-committerdate --count=19 refs/heads/ --format='%(color:red)%(committerdate:relative)%09%(color:yellow)%(refname:short)%09%(color:blue)%(subject) %(color:reset)'
+    pls = push --force-with-lease
+	sti = stash --keep-index	
+	merc = merge --no-ff
+[core]
+	editor = vim
+	#pager = iconv -f cp1251 -t utf8 | less -SRFX 
+	pager = less -SRFX
+	autocrlf = input
+	excludesFile = ~/.gitignore
+[diff]
+	tool = meld
+[difftool "meld"]
+	cmd = meld "$LOCAL" "$REMOTE"
+	prompt = false
+[merge]
+	tool = meld
+[i18n]
+	#logOutputEncoding = cp1251
+	logOutputEncoding = utf8
+	commitencoding = utf8
+[jira]
+	username = dkozhokar
+[confluence]
+	username = dkozhokar

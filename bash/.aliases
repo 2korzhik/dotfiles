@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+alias warpc="warp-cli connect"
+alias warpd="warp-cli disconnect"
+alias warps="warp-cli status"
+
+alias file1mb="dd if=/dev/zero of=output.dat bs=1M count=1"
+
+alias xdl="yt-dlp --no-mtime -o '%(id)s'"
+alias dl="yt-dlp --no-mtime -o '%(title)s'"
+alias speedtest1='curl -4 -o /dev/null https://speedtest.selectel.ru/100MB -w %{speed_download}'
+alias speedtest2='t=$(date +"%s"); wget https://speedtest.selectel.ru/100MB -O ->/dev/null ; echo -n "MBit/s: "; expr 8 \* 100 / $(($(date +"%s")-$t))'
+
+alias test_yt1='curl -o /dev/null -4 -k               --connect-to ::speedtest.selectel.ru https://rr2---sn-joug0-n8vs.googlevideo.com/100MB -w %{speed_download}'
+alias test_yt2='curl -o /dev/null -4 -k --tls-max 1.2 --connect-to ::speedtest.selectel.ru https://xvideos.com/100MB                         -w %{speed_download}'
+alias test_yt3='curl -so /dev/null -m 2 -w "code: %{response_code}%{onerror}\nerror: %{errormsg}"'
+alias test_yt4='curl -so /dev/null -m 2 -w "\nRequested URL: %{url}\nRedirect URL: %{redirect_url}\nIP: %{remote_ip}\nHTTP Ver.: %{scheme}/%{http_version}\nSSL Check (0=ok): %{ssl_verify_result}\n\nTime - DNS: %{time_namelookup} sec\nTime - Connection: %{time_connect} sec\nTime - Handshake: %{time_appconnect} sec\nTime - Receiving Data: %{time_starttransfer} sec\nData sent in request: %{size_request} bytes\nData received in headers: %{size_header} bytes\n\nResponse Code: %{response_code}\nExit Code: %{exitcode}\n%{onerror}Error Message: %{errormsg}"'
+alias myip='curl -Ls ip.comss.net/json | jq .'
+
+
+alias hs='history'
+alias ssh='ssh -A'
+alias bt='bluetoothctl'
+alias ncdu='ncdu'
+
+alias chup='docker run -d --rm --name ch --network=host --cap-add=SYS_NICE --cap-add=NET_ADMIN --cap-add=IPC_LOCK  clickhouse/clickhouse-server:latest'
+alias grip='python -m grip'
+
+alias topbysize='find . -type f -printf "%s\t%p\n" | sort -nr | head |  numfmt --field=1 --to=iec'
+alias gitsort='while read file; do echo $(git log --pretty=format:"%Cblue %ad %Cgreen %s %Creset" -n 1 --date=format:"%Y-%m-%d %H:%M:%S" -- $file) $file; done < <(git ls-tree -r --name-only HEAD) | sort -k1,1n'
+
+alias pingme='notify-send --urgency=normal -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history | tail -n 1 | sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias killjobs='for x in `jobs -p`; do kill -9 $x; done'
+
+### php start ####
+alias xdebug='export XDEBUG_CONFIG="remote_enable=1"'
+alias unxdebug='export XDEBUG_CONFIG="remote_enable=0"'
+alias xprofile='export XDEBUG_CONFIG="profiler_enable=1"'
+alias unxprofile='export XDEBUG_CONFIG="profiler_enable=1"'
+
+alias mysqldev='mycli --defaults-group-suffix=developer'
+alias mysqlme='mycli --defaults-group-suffix=kozhokar'
+
+# alias pssh='/usr/bin/parallel-ssh'
+# alias pcs='git diff origin/master.. --raw | grep -v " D" | cut -f2 | xargs ./vendor/bin/sj-phpcs -d memory_limit=128m --report=emacs -p'
+# alias sss='curl -s http://front.sj-dev.local/nginx-backends > /home/kozhokar/.pssh/bends && pssh -i -h /home/kozhokar/.pssh/bends'
+# alias sj_live_stat='for i in `wget http://front.sj-dev.local/nginx-backends -O -` ; do ssh $i "cd /www/vhosts/superjob; echo `git rev-parse HEAD` `hostname`"; done'
+# alias sj_hardware='for i in `wget http://front.sj-dev.local/nginx-backends -O -` ; do  ssh $i "echo  $"\n" && hostname && cat /etc/*-release | head -n 1 && cat /proc/cpuinfo | grep "core id" | wc -l && free -g; done'
+
+alias freeboot='dpkg -l linux-{image,headers}-"[0-9]*" | awk "/^ii/{ print $2}" | grep -v -e `uname -r | cut -f1,2 -d"-"` | grep -e "[0-9]" | xargs sudo apt-get -y purge'
+
+### php end ####
+
+alias ktoswaps=$'for file in /proc/*/status ; do awk \'/VmSwap|Name/{printf $2 " " $3}END{ print ""}\' $file; done | sort -k 2 -n -r | head'
+
