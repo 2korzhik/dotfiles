@@ -1,0 +1,10 @@
+---
+- name: Generate .my.cnf with decrypted passwords
+  hosts: localhost
+  vars_files:
+    - .my.creds.yml
+  tasks:
+    - name: Create .my.cnf file
+      template:
+        src: .my.tpl.j2
+        dest: ../bash/.my.cnf

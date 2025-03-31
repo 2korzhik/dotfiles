@@ -1,0 +1,41 @@
+[mysql]
+# init-command = "SET NAMES utf8"
+# pager = less -n -i -S
+pager = less -iMSx4 -FX
+prompt =(mysql) \u@\h [\d] >
+connect_timeout=43200
+
+[client]
+user={{ client.user }}
+password={{ client.password }}
+# default-character-set=utf8
+
+[clientdeveloper]
+user={{ clientdeveloper.user }}
+password={{ clientdeveloper.password }}
+
+[clientsj_web]
+user={{ clientsj_web.user }}
+password={{ clientsj_web.password }}
+
+[clientsj_web_test]
+user={{ clientsj_web_test.user }}
+password={{ clientsj_web_test.password }}
+
+[clientsj_cron_test]
+user={{ clientsj_cron_test.user }}
+password={{ clientsj_cron_test.password }}
+
+[clientkozhokar]
+user={{ clientkozhokar.user }}
+password={{ clientkozhokar.password }}
+
+[clientetl]
+user={{ clientetl.user }}
+password={{ clientetl.password }}
+host=test02.superjob.local
+database=tmp
+
+[clientsj_cron_rmq_test]
+user={{ clientsj_cron_rmq_test.user }}
+password={{ clientsj_cron_rmq_test.password }}
