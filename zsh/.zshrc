@@ -1,11 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
@@ -60,7 +60,8 @@ CASE_SENSITIVE="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="yyyy-mm-dd"
+HIST_STAMPS="yyyy-mm-dd"
+HISTORY_IGNORE="(ls|pwd|dl|xdl|pwd|exit)*"
 
 setopt EXTENDED_HISTORY      # Write the history file in the ':start:elapsed;command' format.
 setopt INC_APPEND_HISTORY    # Write to the history file immediately, not when the shell exits.
@@ -71,30 +72,32 @@ setopt APPEND_HISTORY        # append to history file (Default)
 setopt HIST_NO_STORE         # Don't store history commands
 setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks from each command line being added to the history.
 
-HIST_STAMPS="yyyy-mm-dd"
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=10000000
-# HISTORY_IGNORE="(ls|cd|pwd|exit|cd)*"
-HISTORY_IGNORE="(ls|pwd|dl|xdl|pwd|exit)*"
-HIST_STAMPS="yyyy-mm-dd"
 
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=
+# ZSH_CUSTOM=
 
 # Параметры для fzf
-export FZF_PREVIEW_WINDOW=':hidden'
-export FZF_DEFAULT_OPTS="--layout=default --info=inline --height=80% --multi --preview='${FZF_PREVIEW}' --preview-window='${FZF_PREVIEW_WINDOW}'"
-export FZF_COLOR_SCHEME="--color=bg+:black,fg+:white"
-export FZF_PROMPT="∼ "
-export FZF_POINTER="▶"
-export FZF_MARKER="✓"
-export FZF_BIND_KEYS="--bind '?:toggle-preview' --bind 'ctrl-a:select-all' --bind 'ctrl-e:execute(vim {+} >/dev/tty)' --bind 'ctrl-v:execute(code {+})'"
+fzf_default_opts+=(
+"--layout=default"
+"--info=inline"
+"--height=80%"
+"--multi"
+"--color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'"
+"--prompt='∼ '"
+"--pointer='▶'"
+"--marker='✓'"
+"--bind '?:toggle-preview'"
+"--bind 'ctrl-a:select-all'"
+"--bind 'ctrl-e:execute(vim {+} >/dev/tty)'"
+"--bind 'ctrl-v:execute(code {+})'"
+)
+export FZF_DEFAULT_OPTS=$(printf '%s\n' "${fzf_default_opts[@]}")
 
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
-#export FZF_BASE=/home/kozhokar/clone/fzf
-
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -142,9 +145,12 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
@@ -155,14 +161,14 @@ source $ZSH/oh-my-zsh.sh
 
 PROMPT='%{$fg_bold[white]%}$USER@%{$fg[yellow]%}%m%}%{$fg_bold[cyan]%} %c $(git_prompt_info)%{$reset_color%}'
 
-source $HOME/.aliases
 
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
-# >>> spoofdpi <<<< 
-export PATH=$PATH:~/.spoofdpi/bin
+export GOBIN=$HOME/go/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOBIN
 
 
 # >>> conda initialize >>>
@@ -179,11 +185,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-
-export GOBIN=$HOME/go/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$GOBIN
-
-
-
