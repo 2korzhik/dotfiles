@@ -70,7 +70,6 @@ final_space = true
   ]
   background = 'transparent'
   template = '❯ '
-  newline = true
 
 [secondary_prompt]
   background = 'transparent'
