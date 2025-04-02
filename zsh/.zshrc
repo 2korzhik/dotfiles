@@ -76,33 +76,12 @@ setopt HIST_IGNORE_DUPS          # Don\'t record an entry that was just recorded
 # setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
 setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
 
-
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=10000000
 
-
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=
-
-# Параметры для fzf
-fzf_default_opts+=(
-"--layout=default"
-"--info=inline"
-"--height=80%"
-"--multi"
-"--color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'"
-"--prompt='∼ '"
-"--pointer='▶'"
-"--marker='✓'"
-"--bind '?:toggle-preview'"
-"--bind 'ctrl-a:select-all'"
-"--bind 'ctrl-e:execute(vim {+} >/dev/tty)'"
-"--bind 'ctrl-v:execute(code {+})'"
-)
-export FZF_DEFAULT_OPTS=$(printf '%s\n' "${fzf_default_opts[@]}")
-
-export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -112,24 +91,32 @@ export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 plugins=(
     git 
     tmux 
-  # zsh-autosuggestions 
+    zsh-autosuggestions
     zsh-syntax-highlighting
     myfuncs
     docker
     docker-compose
-  # fzf
-    fzf-zsh-plugin
+    fzf
+    # fzf-zsh-plugin
     fzf-tab
     omp.p10k.theme
 )
-# PROMPT='%{$fg_bold[white]%}$USER@%{$fg[yellow]%}%m%}%{$fg_bold[cyan]%} %c $(git_prompt_info)%{$reset_color%}'
-
 
 ZSH_TMUX_AUTOSTART=false
 
-# Open in tmux popup if on tmux, otherwise use --height mode
-# export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
-
+# Параметры для fzf
+fzf_default_opts+=(
+"--layout=default"
+"--info=inline"
+"--height=60%"
+"--multi"
+"--color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'"
+"--prompt='∼ '"
+"--pointer='▶'"
+"--marker='✓'"
+"--tmux bottom,40%"
+)
+export FZF_DEFAULT_OPTS=$(printf '%s\n' "${fzf_default_opts[@]}")
 
 source $ZSH/oh-my-zsh.sh
 
@@ -166,9 +153,6 @@ source $ZSH/oh-my-zsh.sh
 #
 
 
-
-
-
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
@@ -176,7 +160,6 @@ fi
 export GOBIN=$HOME/go/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOBIN
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
