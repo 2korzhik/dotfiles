@@ -13,6 +13,7 @@ PLUGINS=(
     "fzf-zsh-plugin https://github.com/unixorn/fzf-zsh-plugin.git"
     "zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git"
     "zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    "zsh-completions https://github.com/zsh-users/zsh-completions.git"
 )
 
 echo "Проверка и установка зависимостей..."

@@ -89,9 +89,10 @@ SAVEHIST=10000000
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git 
-    tmux 
-    zsh-autosuggestions
+    git
+    tmux
+    zsh-completions
+    # zsh-autosuggestions
     zsh-syntax-highlighting
     myfuncs
     docker
@@ -117,6 +118,9 @@ fzf_default_opts+=(
 "--tmux bottom,40%"
 )
 export FZF_DEFAULT_OPTS=$(printf '%s\n' "${fzf_default_opts[@]}")
+
+# Add it to FPATH in your .zshrc by adding the following line before source "$ZSH/oh-my-zsh.sh"
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 
