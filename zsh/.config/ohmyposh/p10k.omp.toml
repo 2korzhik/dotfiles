@@ -23,7 +23,7 @@ final_space = true
     background = 'transparent'
     # foreground = '#D0666F'
     foreground = 'p:grey'
-    template = " [<cyan>{{ .HEAD }}{{if .BranchStatus }} <green>{{ .BranchStatus }}</>{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} <red>* {{ .Working.String }}</>{{ end }}</>]"
+    template = " [<cyan>{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}</>{{ end }}<green>{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} <red>{{ .Working.String }}</>{{ end }}</>]"
   # template = " [<cyan>{{ .HEAD }}{{if .BranchStatus }} <green>{{ .BranchStatus }}</>{{ end }}{{ if .Working.Changed }} <red>* {{ .Working.String }}</>{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}</>]"
   # template = " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}"
   # template = ' <#5FAAE8>git(<yellow>{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}</><cyan>{{ if gt .Behind 0 }} ⇣{{ end }}{{ if gt .Ahead 0 }}^{{ end }}</>)</>'
@@ -34,6 +34,8 @@ final_space = true
       branch_icon = ''
       commit_icon = '@'
       fetch_status = true
+      branch_ahead_icon = '+'
+      branch_behind_icon = "\u2013"
 
 [[blocks]]
   type = 'rprompt'
@@ -52,7 +54,7 @@ final_space = true
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
-  newline = true
+  # newline = true
 
   [[blocks.segments]]
     template = '❯'
@@ -68,6 +70,7 @@ final_space = true
   ]
   background = 'transparent'
   template = '❯ '
+  newline = true
 
 [secondary_prompt]
   background = 'transparent'
