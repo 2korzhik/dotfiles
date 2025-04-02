@@ -71,6 +71,11 @@ setopt HIST_VERIFY           # Do not execute immediately upon history expansion
 setopt APPEND_HISTORY        # append to history file (Default)
 setopt HIST_NO_STORE         # Don't store history commands
 setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks from each command line being added to the history.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don\'t record an entry that was just recorded again.
+# setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+
 
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
@@ -115,7 +120,9 @@ plugins=(
   # fzf
     fzf-zsh-plugin
     fzf-tab
+    omp.p10k.theme
 )
+# PROMPT='%{$fg_bold[white]%}$USER@%{$fg[yellow]%}%m%}%{$fg_bold[cyan]%} %c $(git_prompt_info)%{$reset_color%}'
 
 
 ZSH_TMUX_AUTOSTART=false
@@ -159,7 +166,7 @@ source $ZSH/oh-my-zsh.sh
 #
 
 
-PROMPT='%{$fg_bold[white]%}$USER@%{$fg[yellow]%}%m%}%{$fg_bold[cyan]%} %c $(git_prompt_info)%{$reset_color%}'
+
 
 
 if [ -f ~/.aliases ]; then
