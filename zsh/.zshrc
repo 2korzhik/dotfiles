@@ -105,19 +105,16 @@ plugins=(
 
 ZSH_TMUX_AUTOSTART=false
 
-# Параметры для fzf
-fzf_default_opts+=(
-"--layout=default"
-"--info=inline"
-"--height=60%"
-"--multi"
-"--color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'"
-"--prompt='∼ '"
-"--pointer='▶'"
-"--marker='✓'"
-"--tmux bottom,40%"
-)
-export FZF_DEFAULT_OPTS=$(printf '%s\n' "${fzf_default_opts[@]}")
+export FZF_DEFAULT_OPTS='
+  --layout=default
+  --info=inline
+  --height=60%
+  --multi
+  --color="hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008"
+  --prompt="∼ "
+  --pointer="▶"
+  --marker="✓"
+'
 
 # Add it to FPATH in your .zshrc by adding the following line before source "$ZSH/oh-my-zsh.sh"
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
