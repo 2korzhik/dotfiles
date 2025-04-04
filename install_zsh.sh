@@ -12,6 +12,7 @@ PLUGINS=(
     "zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git"
     "zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git"
     "zsh-completions https://github.com/zsh-users/zsh-completions.git"
+    "zsh-shift-select https://github.com/jirutka/zsh-shift-select.git"
 )
 
 echo "1. install Oh My Zsh..."
