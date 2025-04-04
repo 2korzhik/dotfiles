@@ -2,6 +2,10 @@
 
 set -e
 
+source install_apt_pkgs.sh
+
+source ./install_tmux.sh
+
 source ./install_zsh.sh
 
 source ./generate_my_cnf.sh
