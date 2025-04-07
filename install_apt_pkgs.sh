@@ -9,8 +9,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Update and upgrade already-installed formulae
 apt update
 
-apt install zsh
-apt install curl
-apt install tmux
-apt install stow
-apt install ansible
+apt install -y zsh
+apt install -y curl
+apt install -y tmux
+apt install -y stow
+apt install -y ansible
