@@ -4,7 +4,7 @@ set -e  # Останавливаем скрипт при любой ошибке
 
 
 # Пути
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Список папок с конфигами для stow
 CONFIGS=("bash" "git" "tmux" "vim" "zsh")

@@ -29,6 +29,12 @@ if [[ ! -d "$fonts_dir" ]]; then
 fi
 
 for font in "${fonts[@]}"; do
+    # Проверка: установлен ли шрифт через fontconfig
+    if fc-list | grep -i -q "$font"; then
+        echo "Font '$font' is already installed, skipping."
+        continue
+    fi
+
     zip_file="${font}.zip"
     if [[ -z "$version" || "$version" == "latest" ]]; then
         download_url="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${zip_file}"
