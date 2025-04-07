@@ -7,7 +7,7 @@ set -e  # Останавливаем скрипт при любой ошибке
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Список папок с конфигами для stow
-CONFIGS=("bash" "git" "tmux" "vim" "zsh")
+CONFIGS=("bash" "git" "tmux" "vim" "zsh" "terminal")
 
 command -v stow >/dev/null 2>&1 || { echo "stow не установлен"; exit 1; }
 

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 CUSTOM_PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
 OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
 ZSHRC_PATH="$HOME/.zshrc"

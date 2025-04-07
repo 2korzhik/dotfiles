@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 TMUX_PLUGIN_DIR="$HOME/.tmux/plugins"
 
 PLUGINS=(
