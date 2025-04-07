@@ -10,7 +10,7 @@ source install_fonts.sh
 
 source ./install_tmux.sh
 
-source ./install_zsh.sh
+source install_omz.sh
 
 source ./generate_my_cnf.sh
 

@@ -33,7 +33,5 @@ for plugin in "${PLUGINS[@]}"; do
     fi
 done
 
-if [ "$SHELL" != "$(which zsh)" ]; then
-    echo "3. switch shell to zsh..."
-    chsh -s "$(which zsh)"
-fi
+echo "3. install oh-my-posh..."
+curl -s https://ohmyposh.dev/install.sh | bash -s
