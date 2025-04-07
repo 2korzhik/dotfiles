@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 function mycsv {
     column -t -s, -n "$@" | less -F -S -X -K

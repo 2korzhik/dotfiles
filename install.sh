@@ -1,8 +1,10 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 set -e
 
 source install_apt_pkgs.sh
+
+source install_kitty.sh
 
 source install_fonts.sh
 
