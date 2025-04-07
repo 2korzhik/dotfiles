@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-set -e  # Останавливаем скрипт при любой ошибке
-
-
 # Пути
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -11,7 +8,7 @@ CONFIGS=("bash" "git" "tmux" "vim" "zsh" "terminal")
 
 command -v stow >/dev/null 2>&1 || { echo "stow не установлен"; exit 1; }
 
-echo "Устанавливаю конфиги через stow..."
+echo "🟢 Устанавливаю конфиги через stow..."
 cd "${DOTFILES_DIR}"
 for config in "${CONFIGS[@]}"; do
     echo "Stowing $config..."
@@ -21,6 +18,3 @@ for config in "${CONFIGS[@]}"; do
         echo "❌ Ошибка при установке $config." >&2
     fi
 done
-
-echo "🎉 Симлинки на конфиги созданы!"
-

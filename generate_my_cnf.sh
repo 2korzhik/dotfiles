@@ -3,7 +3,7 @@
 PLAYBOOK_PATH="ansible/generate_mysql_config.yml"
 MAX_ATTEMPTS=3
 
-echo "Для генерации .my.cnf введите пароль к Ansible Vault."
+echo "🟢 Для генерации .my.cnf введите пароль к Ansible Vault."
 
 for ((attempt = 1; attempt <= MAX_ATTEMPTS; attempt++)); do
   set +e  # отключаем "exit on error"

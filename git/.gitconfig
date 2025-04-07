@@ -45,3 +45,5 @@
 	username = dkozhokar
 [confluence]
 	username = dkozhokar
+[safe]
+	directory = /home/kozhokar/.dotfiles

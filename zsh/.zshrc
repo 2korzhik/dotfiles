@@ -120,6 +120,8 @@ export FZF_DEFAULT_OPTS='
 # Add it to FPATH in your .zshrc by adding the following line before source "$ZSH/oh-my-zsh.sh"
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
+export PATH=$PATH:$HOME/.local/bin
+
 source $ZSH/oh-my-zsh.sh
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -31,17 +31,18 @@ fi
 for font in "${fonts[@]}"; do
     # Проверка: установлен ли шрифт через fontconfig
     if fc-list | grep -i -q "$font"; then
+        echo "🔴"
         echo "Font '$font' is already installed, skipping."
         continue
     fi
 
+    echo "🟢 Устанавливаю шрифты"
     zip_file="${font}.zip"
     if [[ -z "$version" || "$version" == "latest" ]]; then
         download_url="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${zip_file}"
     else
         download_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/${zip_file}"
     fi
-    echo "Downloading $download_url"
     wget "$download_url"
     unzip -o "$zip_file" -d "$fonts_dir"
     rm "$zip_file"

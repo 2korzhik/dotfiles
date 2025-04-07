@@ -13,12 +13,12 @@ PLUGINS=(
     "zsh-shift-select https://github.com/jirutka/zsh-shift-select.git"
 )
 
-echo "1. install Oh My Zsh..."
+echo "🟢 1. install Oh My Zsh..."
 if [ ! -d "$OH_MY_ZSH_DIR" ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
-echo "2. install plugins..."
+echo "🟢 2. install plugins..."
 for plugin in "${PLUGINS[@]}"; do
     NAME=$(echo "$plugin" | cut -d' ' -f1)
     URL=$(echo "$plugin" | cut -d' ' -f2)
@@ -31,5 +31,10 @@ for plugin in "${PLUGINS[@]}"; do
     fi
 done
 
-echo "3. install oh-my-posh..."
+echo "🟢 3. install oh-my-posh..."
 curl -s https://ohmyposh.dev/install.sh | bash -s
+export PATH="$HOME/.local/bin:$PATH"
+
+echo "🟢 4. install fzf..."
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+sh -c "~/.fzf/install --no-fish --no-bash --key-bindings --completion --no-update-rc"

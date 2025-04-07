@@ -9,3 +9,4 @@ apt install -y curl
 apt install -y tmux
 apt install -y stow
 apt install -y ansible
+apt install -y neovim
