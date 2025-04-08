@@ -124,6 +124,8 @@ export PATH=$PATH:$HOME/.local/bin
 
 source $ZSH/oh-my-zsh.sh
 
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
+
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # User configuration

@@ -129,6 +129,9 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+eval "$(zoxide init bash)"
+
+
 export PATH=$PATH:$HOME/.composer/vendor/bin
 export PATH=$PATH:$HOME/.local/bin
 export KETTLE_HOME=/www/reps/etl
