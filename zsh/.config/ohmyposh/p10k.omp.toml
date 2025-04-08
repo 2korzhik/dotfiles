@@ -8,6 +8,20 @@ final_space = true
   # newline = true
 
   [[blocks.segments]]
+    type = "python"
+    style = "plain"
+    # foreground = "#C678DD"
+  # template = '{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}({{ .Venv }}) {{ end }}{{ .Full }} {{ end }}'
+    template = '{{ if .Error }}{{ .Error }}{{ else }}({{ if .Venv }}{{ .Venv }}{{ else }}{{ .Full }}{{ end }}) {{ end }}'
+    foreground = '#D0666F'
+
+    [blocks.segments.properties]
+      display_mode = "environment"
+      fetch_virtual_env = true
+      folder_name_fallback = false
+      home_enabled = true
+
+  [[blocks.segments]]
     type = 'path'
     style = 'plain'
     background = 'transparent'
