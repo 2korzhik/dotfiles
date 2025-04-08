@@ -141,6 +141,7 @@ command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 # else
 #   export EDITOR='mvim'
 # fi
+EDITOR="nvim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
