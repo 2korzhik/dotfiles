@@ -101,7 +101,7 @@ plugins=(
     # fzf-zsh-plugin
     fzf-tab
     omp.p10k.theme
-    # zsh-shift-select
+    zsh-shift-select
 )
 
 ZSH_TMUX_AUTOSTART=false

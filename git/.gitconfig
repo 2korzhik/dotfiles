@@ -24,6 +24,7 @@
     pls = push --force-with-lease
 	sti = stash --keep-index	
 	merc = merge --no-ff
+	nuke = !sh -c \"git branch -D $1 && git push origin :$1\" -
 [core]
 	editor = vim
 	#pager = iconv -f cp1251 -t utf8 | less -SRFX 
