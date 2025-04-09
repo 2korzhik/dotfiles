@@ -37,7 +37,12 @@ final_space = true
     background = 'transparent'
     # foreground = 'p:pink'
     foreground = 'p:grey'
-    template = " [<cyan>{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}</>{{ end }}<green>{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} <red>{{ .Working.String }}</>{{ end }}</>]"
+    # template = " [<cyan>{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}</>{{ end }}<green>{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} <red>{{ .Working.String }}</>{{ end }}</>]"
+    template = """ \
+[<cyan>{{if not .Detached}}{{ .HEAD }}{{else}}@{{ printf "%.7s" .Commit.Sha }}{{end}}\
+{{if .BranchStatus }} {{ .BranchStatus }}</>{{ end }}\
+<green>{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} <red>{{ .Working.String }}</>{{ end }}</>]\
+"""
   # template = " [<cyan>{{ .HEAD }}{{if .BranchStatus }} <green>{{ .BranchStatus }}</>{{ end }}{{ if .Working.Changed }} <red>* {{ .Working.String }}</>{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}</>]"
   # template = " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}"
   # template = ' <#5FAAE8>git(<yellow>{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}</><cyan>{{ if gt .Behind 0 }} ⇣{{ end }}{{ if gt .Ahead 0 }}^{{ end }}</>)</>'
