@@ -21,6 +21,7 @@ for ((attempt = 1; attempt <= MAX_ATTEMPTS; attempt++)); do
   if [[ $attempt -eq $MAX_ATTEMPTS ]]; then
     echo "Превышено количество попыток. Пропускаю генерацию конфига."
   else
-    echo "Осталось ($MAX_ATTEMPTS - $attempt) попыток..."
+    ((remaining_attempts = MAX_ATTEMPTS - attempt))
+    echo "Попыток осталось: $remaining_attempts..."
   fi
 done
