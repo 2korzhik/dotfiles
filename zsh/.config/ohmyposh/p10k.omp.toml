@@ -10,10 +10,10 @@ final_space = true
   [[blocks.segments]]
     type = "python"
     style = "plain"
-    # foreground = "#C678DD"
-  # template = '{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}({{ .Venv }}) {{ end }}{{ .Full }} {{ end }}'
+    # foreground = "= 'p:purple'"
+    # template = '{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}({{ .Venv }}) {{ end }}{{ .Full }} {{ end }}'
     template = '{{ if .Error }}{{ .Error }}{{ else }}({{ if .Venv }}{{ .Venv }}{{ else }}{{ .Full }}{{ end }}) {{ end }}'
-    foreground = '#D0666F'
+    foreground = 'p:pink'
 
     [blocks.segments.properties]
       display_mode = "environment"
@@ -35,7 +35,7 @@ final_space = true
     type = 'git'
     style = 'plain'
     background = 'transparent'
-    # foreground = '#D0666F'
+    # foreground = 'p:pink'
     foreground = 'p:grey'
     template = " [<cyan>{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}</>{{ end }}<green>{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} <red>{{ .Working.String }}</>{{ end }}</>]"
   # template = " [<cyan>{{ .HEAD }}{{if .BranchStatus }} <green>{{ .BranchStatus }}</>{{ end }}{{ if .Working.Changed }} <red>* {{ .Working.String }}</>{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}</>]"
@@ -75,7 +75,10 @@ final_space = true
     background = 'transparent'
     type = 'text'
     style = 'plain'
-    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+    foreground_templates = [
+      '{{if gt .Code 0}}red{{end}}',
+      '{{if eq .Code 0}}magenta{{end}}'
+    ]
 
 [transient_prompt]
   foreground_templates = [
@@ -89,3 +92,8 @@ final_space = true
   background = 'transparent'
   foreground = 'magenta'
   template = '❯❯ '
+
+[palette]
+  grey = '#6c6c6c'
+  pink = '#D0666F'
+  purple = '#C678DD'
