@@ -38,3 +38,6 @@ export PATH="$HOME/.local/bin:$PATH"
 echo "🟢 4. install fzf..."
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 sh -c "~/.fzf/install --no-fish --no-bash --key-bindings --completion --no-update-rc"
+
+echo "🟢 5. install uv..."
+curl -LsSf https://astral.sh/uv/install.sh | sh
