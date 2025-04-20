@@ -184,3 +184,5 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 command -v uv &>/dev/null && eval "$(uv generate-shell-completion zsh)"
+
+command -v task &>/dev/null && eval "$(task --completion zsh)"

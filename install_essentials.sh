@@ -14,3 +14,8 @@ apt install -y fd-find ripgrep zoxide
 apt install -y ffmpeg 7zip jq poppler-utils imagemagick
 
 snap install yazi --classic
+
+
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin

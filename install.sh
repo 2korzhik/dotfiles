@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo ./install_apt_pkgs.sh
+sudo ./install_essentials.sh
 
 source install_kitty.sh
 
