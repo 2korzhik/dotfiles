@@ -18,6 +18,7 @@ alias test_yt4='curl -so /dev/null -m 2 -w "\nRequested URL: %{url}\nRedirect UR
 alias myip='curl -Ls ip.comss.net/json | jq .'
 
 
+alias l='ls -lah --group-directories-first'
 alias hs='history'
 alias ssh='ssh -A'
 alias bt='bluetoothctl'

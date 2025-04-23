@@ -20,3 +20,8 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# Override ls to use LC_COLLATE=C for dot-sensitive sorting
+function ls() {
+    LC_COLLATE=C command ls "$@"
+}
