@@ -20,12 +20,14 @@
     sw = switch
     hist = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n 20
     his = log --pretty=format:\"%h %ad | %s%d [%an]\"  --graph --date=format:'%Y-%m-%d %H:%M:%S' -- 
-    l = log --pretty=format:'%C(auto,yellow) %h %Creset %ad %C(auto,blue) [%an] %Cgreen %s %C(auto,magenta) %d' --date=format:'%Y-%m-%d %H:%M:%S' -n 12
+    l = log --pretty=format:'%C(auto,yellow) %h %Creset %ad %C(auto,blue) [%an] %Cgreen %s %C(auto,magenta) %d' --date=format:'%Y-%m-%d %H:%M:%S' -n 10
     bro = !git for-each-ref --sort=-committerdate --count=19 refs/heads/ --format='%(color:red)%(committerdate:relative)%09%(color:yellow)%(refname:short)%09%(color:blue)%(subject) %(color:reset)'
     pls = push --force-with-lease
     sti = stash --keep-index
     merc = merge --no-ff
     nuke = !sh -c \"git branch -D $1 && git push origin :$1\" -
+    nuke-tags = "!for t in $(git tag -l); do git tag -d \"$t\" && git push origin :refs/tags/$t; done"
+
 [core]
     editor = vim
     #pager = iconv -f cp1251 -t utf8 | less -SRFX 
