@@ -95,6 +95,7 @@ plugins=(
     # zsh-autosuggestions
     zsh-syntax-highlighting
     myfuncs
+    git-master-archive
     docker
     docker-compose
     fzf
