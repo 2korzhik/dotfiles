@@ -12,14 +12,6 @@ function mytsv {
 function alert() { notify-send "$@"; }
 function alert_pipe() { while read OUTPUT; do notify-send "$OUTPUT"; done }
 
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
 
 # Override ls to use LC_COLLATE=C for dot-sensitive sorting
 function ls() {

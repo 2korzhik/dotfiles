@@ -4,6 +4,8 @@
 apt update
 
 apt install -y git
+apt install -y git-lfs
+apt install -y git-filter-repo
 apt install -y zsh
 apt install -y curl
 apt install -y tmux

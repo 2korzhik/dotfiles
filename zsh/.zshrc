@@ -94,8 +94,9 @@ plugins=(
     zsh-completions
     # zsh-autosuggestions
     zsh-syntax-highlighting
-    myfuncs
-    git-master-archive
+    my-utils
+    my-git-utils
+    my-yazi
     docker
     docker-compose
     fzf
